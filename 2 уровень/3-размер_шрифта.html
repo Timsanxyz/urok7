@@ -22,6 +22,14 @@
     
 
     <script>
+        'use strict';
+
+        let inEl = document.querySelector("input");
+        let divEl = document.querySelector("div");
+
+        inEl.addEventListener('input', function (event){
+            divEl.style.fontSize = event.target.value + "px";
+        });
         
     </script>
 </body>
