@@ -11,6 +11,11 @@ const texts = {
     2.1 Переберите полученную коллекцию, например с помощью forEach, и каждой ссылке назначьте
     обработчик клика функцию clickHandler.
 */
+let txtDiv = document.querySelector(".text");
+let navEl = document.querySelectorAll(".nav-link");
+navEl.forEach(function (element){
+    element.addEventListener('click', clickHandler);
+});
 
 
 /**
@@ -20,6 +25,8 @@ const texts = {
 function clickHandler(event) {
     // здесь вызывайте changeText и changeActiveClass, и передавайте
     // им объект события.
+    changeText(event);
+    changeActiveClass(event);
    
 }
 
@@ -29,7 +36,8 @@ function clickHandler(event) {
  * @param {MouseEvent} event 
  */
 function changeActiveClass(event) {
-    
+    document.querySelector(".active").classList.remove("active");
+    event.target.classList.add("active");
 }
 
 /**
@@ -39,5 +47,17 @@ function changeActiveClass(event) {
  * @param {MouseEvent} event 
  */
 function changeText(event) {
-    
+    console.log(event.target.textContent);
+    switch (event.target.textContent){
+        case "Link 1":
+            console.log("ONE");
+            txtDiv.textContent = texts.text1;
+            break;
+        case "Link 2":
+            txtDiv.textContent = texts.text2;
+            break;
+        case "Link 3":
+            txtDiv.textContent = texts.text3;
+            break;
+    }
 }
